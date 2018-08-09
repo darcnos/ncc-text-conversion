@@ -33,8 +33,8 @@ def read_text(csvfile):
     with open(csvfile, newline='') as csvf:
         reader = csv.reader(csvf)
         for row in reader:
-            content.append(row)
             modify_by_type(row)
+            content.append(row)
         return(content)
 
 
