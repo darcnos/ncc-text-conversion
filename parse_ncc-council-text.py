@@ -40,6 +40,7 @@ def read_text(csvfile):
 
 def modify_by_type(line):
     """reads the line's type by looking at the 7th column"""
+    line[7] = datetime.today().strftime('%m/%d/%Y')
     if line[9].find('AGENDAS') != -1:
         agenda_date = datetime.strptime(line[3], '%y-%m-%d')
         
@@ -48,7 +49,6 @@ def modify_by_type(line):
 
         line[6] = '{}'.format(agenda_date.strftime('%m-%d-%Y'))
         line[3] = '{}{}{}'.format('AGDA', str(agenda_date.year)[0:2], line[3][:-3])
-
         
     elif line[9].find('RESOLUTION') != -1:
         line[3] = 'RES{}'.format(line[3])
